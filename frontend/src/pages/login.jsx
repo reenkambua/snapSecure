@@ -8,7 +8,7 @@ export default function Login({ setUser }) {
 
   const handleLogin = () => {
     if (!email || !password) return alert('Please fill in all fields.');
-    // Mock login: set user and navigate to dashboard
+   
     setUser({ email });
     navigate('/dashboard');
   };

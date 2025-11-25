@@ -10,7 +10,7 @@ export default function Signup({ setUser }) {
   const handleSignup = () => {
     if (!email || !password || !confirmPassword) return alert('Please fill in all fields.');
     if (password !== confirmPassword) return alert('Passwords do not match.');
-    // Mock signup: set user and navigate to dashboard
+   
     setUser({ email });
     navigate('/dashboard');
   };
