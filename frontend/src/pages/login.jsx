@@ -1,16 +1,32 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) return alert('Please fill in all fields.');
-   
-    setUser({ email });
-    navigate('/dashboard');
+
+    try {
+      const res = await axios.post('http://localhost:8000/api/login/', {
+        username: email, 
+        password,
+      });
+
+
+      localStorage.setItem('access', res.data.access);
+      localStorage.setItem('refresh', res.data.refresh);
+
+      setUser({ email });
+
+      navigate('/dashboard');
+    } catch (err) {
+      console.error(err.response?.data || err);
+      alert('Login failed. Check your credentials.');
+    }
   };
 
   return (

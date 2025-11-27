@@ -18,3 +18,6 @@ const FeatureCard = ({ Icon, title, description, color }) => {
 };
 
 export default FeatureCard;
+
+
+

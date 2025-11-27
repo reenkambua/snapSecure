@@ -1,18 +1,34 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
-export default function Signup({ setUser }) {
+export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = () => {
-    if (!email || !password || !confirmPassword) return alert('Please fill in all fields.');
-    if (password !== confirmPassword) return alert('Passwords do not match.');
-   
-    setUser({ email });
-    navigate('/dashboard');
+  const handleSignup = async () => {
+    if (!email || !password || !confirmPassword)
+      return alert('Please fill in all fields.');
+    if (password !== confirmPassword)
+      return alert('Passwords do not match.');
+
+    try {
+      const res = await axios.post('http://localhost:8000/api/signup/', {
+        username: email, 
+        email,
+        password,
+      });
+
+      if (res.status === 201) {
+        alert('Signup successful! Please login.');
+        navigate('/login'); 
+      }
+    } catch (err) {
+      console.error(err.response?.data || err);
+      alert('Signup failed. Try a different email.');
+    }
   };
 
   return (

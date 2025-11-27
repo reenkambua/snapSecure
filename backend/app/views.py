@@ -6,7 +6,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 
 
-@api_view(['POST'])
 def signup(request):
     username = request.data.get('username')
     email = request.data.get('email')
