@@ -1,7 +1,19 @@
 from django.urls import path
-from .views import signup, login
+from . import views
 
 urlpatterns = [
-    path('signup/', signup, name='signup'),
-    path('login/', login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
+
+    path('profile/', views.get_profile, name='get_profile'),
+    path('profile/update-plan/', views.update_subscription, name='update_subscription'),
+
+    path('devices/', views.list_devices, name='list_devices'),
+    path('devices/add/', views.register_device, name='add_device'),  # fixed
+    path('devices/<str:device_id>/', views.get_device, name='get_device'),
+
+    path('attempts/', views.list_attempts, name='list_attempts'),
+    path('attempts/<int:pk>/', views.get_attempt_detail, name='get_attempt_detail'),
+
+    path('snapshots/<int:attempt_id>/', views.get_snapshot_for_attempt, name='get_snapshot'),
 ]

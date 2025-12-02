@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+
 const Card = ({ Icon, title, description }) => (
   <div className="p-6 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 transition">
     <Icon className="w-8 h-8 text-green-400 mb-3" />
