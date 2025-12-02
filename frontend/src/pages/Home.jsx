@@ -17,10 +17,8 @@ const Home = ({ setCurrentPage }) => {
 
   return (
     <div className="bg-gray-800 min-h-screen">
-      {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO */}
       <div className="py-24 px-6 pt-32">
         <div className="text-center max-w-3xl mx-auto">
           <ShieldCheck className="w-16 h-16 text-green-400 mx-auto mb-4" />
@@ -41,14 +39,13 @@ const Home = ({ setCurrentPage }) => {
 
             <button
               className="border border-gray-600 px-6 py-3 rounded-xl text-gray-300 hover:bg-gray-700 transition w-full sm:w-auto"
-              onClick={() => setCurrentPage("features")}
+              onClick={() => navigate("/features")}
             >
               View Features
             </button>
           </div>
         </div>
 
-        {/* FEATURE CARDS */}
         <div className="grid mt-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-2">
           <Card Icon={BellRing} title="Alerts" description="Instant notifications when motion is detected." />
           <Card Icon={Monitor} title="Remote Control" description="Manage your system from anywhere." />
@@ -56,7 +53,6 @@ const Home = ({ setCurrentPage }) => {
         </div>
       </div>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );

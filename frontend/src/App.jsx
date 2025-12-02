@@ -6,7 +6,7 @@ import HowItWorks from './pages/HowItWorks';
 import Login from './pages/login';
 import Signup from './pages/signUp';
 import Dashboard from './pages/Dashboard';
-import Devices from './pages/devices';
+import Devices from './pages/devices'
 import { useState } from 'react';
 
 export default function App() {
